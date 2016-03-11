@@ -1,0 +1,27 @@
+<h1>Add a new tea</h1>
+
+<%= form_tag '/teas', method: :post do %>
+<!-- 
+This form tag is a method. it takes 2 arguments: a string - recipes url
+and a hash {:method => :post} both key and value are symbols!
+-->
+  <div>
+  <%=label_tag :name %>
+  <%= text_field_tag :name %>
+  </div>
+  <div>
+  <%=label_tag :price %>
+  <%= text_field_tag :price %>
+  </div>
+  <div>
+  <%=label_tag :description %>
+  <%= text_field_tag :description %>
+  </div>
+  <div>
+  <%=label_tag :image %>
+  <%= text_field_tag :image %>
+  </div>
+  <div>
+  <%= submit_tag "Submit" %>
+  </div>
+<% end %>

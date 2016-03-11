@@ -1,0 +1,14 @@
+<h1>
+Our teas
+</h1>
+
+<% @teas.each do|tea| %>
+<div class="tea_listing">
+<h2><a href="/teas/<%= tea.id %>"><%= tea.name%>: $<%=tea.price %></a></h2>
+<img class="thumbnail" src= <%= tea.image %> <br />
+<p><span class="intro">Description:</span> <%= tea.description %></p>
+<p><span class="intro">Rating:</span> <%= tea.stars %></p>
+<p><%= tea.reviews %></p>
+</div>
+<% end %>
+

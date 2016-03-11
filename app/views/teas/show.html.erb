@@ -1,0 +1,15 @@
+<h2><%= @tea.name%>: $<%=@tea.price %></h2>
+<img src= <%= @tea.image %> <br />
+<p><span class="intro">Description:</span> <%= @tea.description %></p>
+<p><span class="intro">Rating:</span> <%= @tea.stars %></p>
+<p><%= @tea.reviews %></p>
+<p><a href="/teas/<%=@tea.id%>/edit">Edit this tea listing</a></p>
+<%= link_to "Delete this tea listing", "/teas/#{@tea.id}", method: :delete %>
+<!--<p><a href="/teas/<%=@tea.id%>">Delete this tea listing</a></p>
+
+To delete something from a Link you have to use
+the ruby code here rather than the href link OR
+you can do 
+<a rel="nofollow" data-method="delete" href="/teas/<%=@tea.id%>"> Delete this</a>
+-->
+<p><a href="/teas">Back to all Teas</a></p>
