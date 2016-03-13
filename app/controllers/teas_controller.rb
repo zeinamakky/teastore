@@ -30,7 +30,11 @@ class TeasController < ApplicationController
       description: params[:description],
       image: params[:image]
                })
-    render 'create.html.erb'
+    tea_id = params[:id]
+    @tea = Tea.last
+
+    #render 'create.html.erb'
+    redirect_to "/teas/#{@tea.id}"
   end
 
   def edit
@@ -41,20 +45,22 @@ class TeasController < ApplicationController
 
   def update
     tea_id = params[:id]
-
+    @tea = Tea.find_by(id: tea_id)
     Tea.update(tea_id, {
       name: params[:name],
       price: params[:price],
       description: params[:description],
       image: params[:image]
                })
-    render 'update.html.erb'
+    #render 'update.html.erb'
+    redirect_to "/teas/#{@tea.id}"
   end
 
   def destroy
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     @tea.destroy
-    render 'destroy.html.erb'
+    #render 'destroy.html.erb'
+    redirect_to '/teas'
   end
 end
