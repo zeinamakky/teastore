@@ -23,7 +23,8 @@ body {
 }
 
 .nav {
-
+  position:relative;
+  top:-30px;
   background: #D4A190;
   border:0px;
   height: 50px;
@@ -56,5 +57,22 @@ body {
   background-image:url('http://www.42tea.io/wp-content/uploads/2016/01/Hot-Tea.jpg');
   background-position: center;
   height:300px;
+  color: #fff;
+  padding-left:10px;
+  text-align: bottom;
+  vertical-align: bottom;
+  font-family: 'Great Vibes','Hoefler Text', 'Baskerville Old Face', Garamond, 'Times New Roman', serif;
+  font-size: 24px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 100;
+  line-height: 26.4px;
+      text-shadow: 2px 2px #555;
+
+
+}
+.jumbotron h1 {
+  position:relative;
+  top:150px;
 
 }

@@ -32,6 +32,7 @@ class TeasController < ApplicationController
                })
     tea_id = params[:id]
     @tea = Tea.last
+    flash[:success] = "Recipe successfully created"
 
     #render 'create.html.erb'
     redirect_to "/teas/#{@tea.id}"
@@ -53,6 +54,7 @@ class TeasController < ApplicationController
       image: params[:image]
                })
     #render 'update.html.erb'
+    flash[:success] = "Recipe successfully updated"
     redirect_to "/teas/#{@tea.id}"
   end
 
@@ -60,6 +62,8 @@ class TeasController < ApplicationController
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     @tea.destroy
+    flash[:success] = "Recipe successfully deleted"
+
     #render 'destroy.html.erb'
     redirect_to '/teas'
   end

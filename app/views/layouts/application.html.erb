@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
   <title>Teashop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -18,6 +19,13 @@
   <li role="presentation"><a href="/teas/new">Add new tea</a></li>
 </ul>
 
+
+<% flash.each do |name, message| %>
+  <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
+    <%= message.html_safe %>  
+  </div>
+<% end %>
 <%= yield %>
 
 </body>
