@@ -1,9 +1,11 @@
 <h1>
 Our teas
 </h1>
+
+<% @teas.each_slice(3) do |three_teas| %>
 <div class="row">
 
-  <% @teas.each do|tea| %>
+  <% three_teas.each do|tea| %>
   <div class="col-md-4"> 
 
   <div class="tea_listing">
@@ -18,3 +20,4 @@ Our teas
   <% end %>
 
 </div>
+<% end %>

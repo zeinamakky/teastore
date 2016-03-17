@@ -2,12 +2,30 @@ class TeasController < ApplicationController
  attr_reader :name, :price, :description, :reviews, :stars, :image
 
   def index
-    # @teas = Tea.all
+     @teas = Tea.all
     tea_id = params[:id]
     sort_attribute = params[:sort]
       if sort_attribute != nil
-        @teas = Tea.all.order(sort_attribute)
+        @teas = Tea.order(sort_attribute)
       end
+    reverse_order = params[:order]
+      if reverse_order != nil
+        @teas = Tea.order(reverse_order => :desc)
+      end
+    discount_attribute = params[:discount]
+      if discount_attribute != nil
+        @teas = Tea.where("price <= ?", 5)
+      end
+
+    random_product = params[:random]
+      if random_product != nil
+        @teas = Tea.limit(1)
+      end
+  search_for = params[:search]
+      if search_for != nil
+        @teas = Tea.where(name: :search)
+      end
+
     # tea = Tea.find_by(id: tea_id)
     # @teas = Tea.sort_by(id: tea_id)
     # @teas = @teas.sort_by('tea_id')

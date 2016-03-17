@@ -17,21 +17,30 @@
   <li role="presentation" class="active"><a href="/teas">Home</a></li>
   <li role="presentation"><a href="/teas">Teas</a></li>
   <li role="presentation"><a href="/teas/new">Add new tea</a></li>
-  <li role="presentation"><a href="/teas?sort=price">Sort by price</a></li>
-
+  <li role="presentation"><a href="/teas?discount=alldiscounted">Discount Items</a></li>
+  <li role="presentation"><a href="/teas?random=rando">Random</a></li>
+  <li role="presentation"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Sort
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="/teas?sort=price">Sort by price: lowest to highest</a></li>
+    <li><a href="/teas?sort=price desc">Sort by price: highest to lowest</a></li>
+<!--     <li role="separator" class="divider"></li>
+ -->
+  </ul>
+</li>
 
 </ul>
 <div class="row">
+    <div class="col-lg-6">
+    <%= form_tag '/teas?search_for',  method: :get do %>
+    <%= text_field_tag :search, "Search for...", class: "col-lg-6" %>
+    <%= submit_tag "Submit" %>
+    </div>
+    <% end %>
+</div>
 
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
 <br />
 <div id="main_page_container">
 
