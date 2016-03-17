@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/' => 'teas#index'
   get '/teas' => 'teas#index'
   get '/teas/new' => 'teas#new'
   post '/teas' => 'teas#create'

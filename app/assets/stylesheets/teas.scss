@@ -4,75 +4,34 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-  margin: 0 auto;
-  padding:10px;
-}
+// .col-md-4 {
+//   height:600px;
+// }
 .tea_listing {
-  float:left;
-  width:400px;
-  padding:5px;
+    padding:5px;
+    font-family: 'trebuchet ms'
 
+}
+.tea_listing img {
+  width:100%;
+
+}
+.tea_listing_hed {
+    font-family: 'trebuchet ms'
+
+}
+
+.tea_listing a {
+  color: #BA684C;
+}
+.tea_listing a:hover {
+  color: #555;
+  text-decoration: none;
 }
 .thumbnail {
   border:0px;
-  height:400px;
+  
 }
 .intro {
   font-weight:bold;
-}
-
-.nav {
-  position:relative;
-  top:-30px;
-  background: #D4A190;
-  border:0px;
-  height: 50px;
-}
-
-.nav-tabs >li >a {
-  border-radius: 0px;
-  color: #000;
-  height:50px;
-}
-
-.nav-tabs > li > a:hover,
-.nav-tabs > li > a:focus,
-
- {
-  background:#fff;
-  height:50px;
-  border:0px;
-}
-
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-  border:0px;
-  height:50px;
-  background:#BA684C;
-
-}
-.jumbotron {
-  background-image:url('http://www.42tea.io/wp-content/uploads/2016/01/Hot-Tea.jpg');
-  background-position: center;
-  height:300px;
-  color: #fff;
-  padding-left:10px;
-  text-align: bottom;
-  vertical-align: bottom;
-  font-family: 'Great Vibes','Hoefler Text', 'Baskerville Old Face', Garamond, 'Times New Roman', serif;
-  font-size: 24px;
-  font-style: italic;
-  font-variant: normal;
-  font-weight: 100;
-  line-height: 26.4px;
-      text-shadow: 2px 2px #555;
-
-
-}
-.jumbotron h1 {
-  position:relative;
-  top:150px;
-
 }

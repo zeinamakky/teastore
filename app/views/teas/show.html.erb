@@ -1,8 +1,19 @@
-<h2><%= @tea.name%>: $<%=@tea.price %></h2>
+<h2 class="tea_listing_hed"><%= @tea.name %>: <%= number_to_currency(@tea.price) %> </h2>
+<h3><%= @tea.stock_message %></h3>
 <img src= <%= @tea.image %> <br />
+<p><span class="intro"> <%= @tea.sale_item %></span> Tax: <%= number_to_currency(@tea.tax) %>; <%= number_to_currency(@tea.total) %> with tax</p>
 <p><span class="intro">Description:</span> <%= @tea.description %></p>
 <p><span class="intro">Rating:</span> <%= @tea.stars %></p>
-<p><%= @tea.reviews %></p>
+<h3>Reviews</h3>
+
+<ul>
+<% @tea.reviews_list.each do |review| %>
+  <li>
+  <%= review %>
+  </li>
+  <% end %>
+</ul>
+
 <p><a href="/teas/<%=@tea.id%>/edit">Edit this tea listing</a></p>
 <%= link_to "Delete this tea listing", "/teas/#{@tea.id}", method: :delete %>
 <!--<p><a href="/teas/<%=@tea.id%>">Delete this tea listing</a></p>

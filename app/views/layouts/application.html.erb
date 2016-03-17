@@ -14,11 +14,26 @@
   <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 --></div>
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation" class="active"><a href="/teas">Home</a></li>
   <li role="presentation"><a href="/teas">Teas</a></li>
   <li role="presentation"><a href="/teas/new">Add new tea</a></li>
-</ul>
+  <li role="presentation"><a href="/teas?sort=price">Sort by price</a></li>
 
+
+</ul>
+<div class="row">
+
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br />
+<div id="main_page_container">
 
 <% flash.each do |name, message| %>
   <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
@@ -27,6 +42,6 @@
   </div>
 <% end %>
 <%= yield %>
-
+</div>
 </body>
 </html>

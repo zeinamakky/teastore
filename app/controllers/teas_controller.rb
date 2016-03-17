@@ -2,13 +2,18 @@ class TeasController < ApplicationController
  attr_reader :name, :price, :description, :reviews, :stars, :image
 
   def index
-    @teas = Tea.all
+    # @teas = Tea.all
     tea_id = params[:id]
-    @teas = @teas.sort
+    sort_attribute = params[:sort]
+      if sort_attribute != nil
+        @teas = Tea.all.order(sort_attribute)
+      end
+    # tea = Tea.find_by(id: tea_id)
+    # @teas = Tea.sort_by(id: tea_id)
     # @teas = @teas.sort_by('tea_id')
-    #@teas.sort_by do |tea| #note the exclamation mark
-    #tea[tea_id]
-    #end 
+    # @teas.sort_by do |tea| #note the exclamation mark
+    # tea[tea_id]
+    # end 
    
     render "index.html.erb"
   end
@@ -28,7 +33,8 @@ class TeasController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      image: params[:image]
+      image: params[:image],
+      stock: params[:stock]
                })
     tea_id = params[:id]
     @tea = Tea.last
@@ -51,7 +57,8 @@ class TeasController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      image: params[:image]
+      image: params[:image],
+      stock: params[:stock]
                })
     #render 'update.html.erb'
     flash[:success] = "Recipe successfully updated"

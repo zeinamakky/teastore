@@ -1,0 +1,72 @@
+body {
+  margin: 0 auto;
+  padding:10px;
+  font-family: 'verdana';
+  background: #F5E8E4;
+  background-image:url('lightpaperfibers.png');
+}
+
+#main_page_container {
+  padding:10px;
+  background:#F5E8E4;
+
+}
+.nav {
+  position:relative;
+  top:-30px;
+  background: #D4A190;
+  border:0px;
+  height: 50px;
+  color: #000;
+
+}
+.form-group {
+  width:700px;
+}
+
+.nav-tabs >li >a {
+  border-radius: 0px;
+  color: #000;
+  height:50px;
+}
+
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus,
+
+ {
+  background:#BA684C;
+  height:50px;
+  border:0px;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  border:0px;
+  height:50px;
+  background:#BA684C;
+
+}
+.jumbotron {
+  background-image:url('http://www.42tea.io/wp-content/uploads/2016/01/Hot-Tea.jpg');
+  background-position: center;
+  height:300px;
+  color: #fff;
+  padding-left:10px;
+  text-align: bottom;
+  vertical-align: bottom;
+  font-family: 'Great Vibes','Hoefler Text', 'Baskerville Old Face', Garamond, 'Times New Roman', serif;
+  font-size: 24px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 100;
+  line-height: 26.4px;
+  text-shadow: 2px 2px #555;
+
+
+}
+.jumbotron h1 {
+  position:relative;
+  top:150px;
+
+}
