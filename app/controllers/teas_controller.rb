@@ -30,7 +30,7 @@ class TeasController < ApplicationController
   
   search_for = params[:search]
   if search_for != nil
-    @teas = Tea.where("name LIKE ?", "%"+search_for+"%")
+    @teas = Tea.where("name LIKE ? OR description LIKE ?", "%"+search_for+"%", "%"+search_for+"%")
   end
 
     # tea = Tea.find_by(id: tea_id)
