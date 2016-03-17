@@ -1,30 +1,37 @@
 class TeasController < ApplicationController
- attr_reader :name, :price, :description, :reviews, :stars, :image
+  attr_reader :name, :price, :description, :reviews, :stars, :image
 
   def index
-     @teas = Tea.all
-    tea_id = params[:id]
-    sort_attribute = params[:sort]
-      if sort_attribute != nil
-        @teas = Tea.order(sort_attribute)
-      end
-    reverse_order = params[:order]
-      if reverse_order != nil
-        @teas = Tea.order(reverse_order => :desc)
-      end
-    discount_attribute = params[:discount]
-      if discount_attribute != nil
-        @teas = Tea.where("price <= ?", 5)
-      end
+  @teas = Tea.all
+  tea_id = params[:id]
+  sort_attribute = params[:sort]
+  if sort_attribute != nil
+    @teas = Tea.order(sort_attribute)
+  end
+  
+  reverse_order = params[:order]
+  if reverse_order != nil
+    @teas = Tea.order(reverse_order => :desc)
+  end
+  
+  # can also do it this way
+  # if sort_attribute && sort_order
+  #   @teas = Tea.order(sort_attribute => sort_order)
+  # end
+  discount_attribute = params[:discount]
+  if discount_attribute != nil
+    @teas = Tea.where("price <= ?", 5)
+  end
 
-    random_product = params[:random]
-      if random_product != nil
-        @teas = Tea.limit(1)
-      end
+  random_product = params[:random]
+  if random_product != nil
+    @teas = Tea.limit(1)
+  end
+  
   search_for = params[:search]
-      if search_for != nil
-        @teas = Tea.where(name: :search)
-      end
+  if search_for != nil
+    @teas = Tea.where("name LIKE ?", "%"+search_for+"%")
+  end
 
     # tea = Tea.find_by(id: tea_id)
     # @teas = Tea.sort_by(id: tea_id)
@@ -33,7 +40,7 @@ class TeasController < ApplicationController
     # tea[tea_id]
     # end 
    
-    render "index.html.erb"
+  render "index.html.erb"
   end
 
   def show
@@ -48,12 +55,12 @@ class TeasController < ApplicationController
 
   def create
     Tea.create({
-      name: params[:name],
-      price: params[:price],
-      description: params[:description],
-      image: params[:image],
-      stock: params[:stock]
-               })
+    name: params[:name],
+    price: params[:price],
+    description: params[:description],
+    image: params[:image],
+    stock: params[:stock]
+               }) 
     tea_id = params[:id]
     @tea = Tea.last
     flash[:success] = "Recipe successfully created"
@@ -78,7 +85,7 @@ class TeasController < ApplicationController
       image: params[:image],
       stock: params[:stock]
                })
-    #render 'update.html.erb'
+    # render 'update.html.erb'
     flash[:success] = "Recipe successfully updated"
     redirect_to "/teas/#{@tea.id}"
   end
@@ -89,7 +96,7 @@ class TeasController < ApplicationController
     @tea.destroy
     flash[:success] = "Recipe successfully deleted"
 
-    #render 'destroy.html.erb'
+    # render 'destroy.html.erb'
     redirect_to '/teas'
   end
 end

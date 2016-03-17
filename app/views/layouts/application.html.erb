@@ -34,7 +34,7 @@
 </ul>
 <div class="row">
     <div class="col-lg-6">
-    <%= form_tag '/teas?search_for',  method: :get do %>
+    <%= form_tag '/teas?search_for#{:search}',  method: :get do %>
     <%= text_field_tag :search, "Search for...", class: "col-lg-6" %>
     <%= submit_tag "Submit" %>
     </div>
