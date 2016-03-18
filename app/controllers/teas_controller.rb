@@ -5,14 +5,12 @@ class TeasController < ApplicationController
   @teas = Tea.all
   tea_id = params[:id]
   sort_attribute = params[:sort]
-  if sort_attribute != nil
-    @teas = Tea.order(sort_attribute)
+  sort_order = params[:order]
+  if sort_attribute && sort_order
+    @teas = Tea.order(sort_attribute => sort_order)
   end
   
-  reverse_order = params[:order]
-  if reverse_order != nil
-    @teas = Tea.order(reverse_order => :desc)
-  end
+  
   
   # can also do it this way
   # if sort_attribute && sort_order
@@ -22,30 +20,24 @@ class TeasController < ApplicationController
   if discount_attribute != nil
     @teas = Tea.where("price <= ?", 5)
   end
-
-  random_product = params[:random]
-  if random_product != nil
-    @teas = Tea.limit(1)
-  end
+  # above can be simplified to if params["discount"] == "true"
   
   search_for = params[:search]
   if search_for != nil
-    @teas = Tea.where("name LIKE ? OR description LIKE ?", "%"+search_for+"%", "%"+search_for+"%")
+    @teas = Tea.where("name LIKE ? OR description LIKE ?", "%#{search_for}%", "%#{search_for}%")
   end
-
-    # tea = Tea.find_by(id: tea_id)
-    # @teas = Tea.sort_by(id: tea_id)
-    # @teas = @teas.sort_by('tea_id')
-    # @teas.sort_by do |tea| #note the exclamation mark
-    # tea[tea_id]
-    # end 
-   
+  
   render "index.html.erb"
   end
 
   def show
     tea_id = params[:id]
-    @tea = Tea.find_by(id: tea_id)
+    if tea_id == "random"
+      teas = Tea.all
+      @tea = teas.sample
+    else
+      @tea = Tea.find_by(id: tea_id)
+    end
     render "show.html.erb"
   end
 
