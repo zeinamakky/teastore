@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   patch '/teas/:id' => 'teas#update'
   delete 'teas/:id' => 'teas#destroy'
   
+  get '/suppliers' => 'suppliers#index'
+  get '/suppliers/new' => 'suppliers#new'
+  post 'suppliers' => 'suppliers#create'
+  get '/suppliers/:id/edit' => 'suppliers#edit'
+  pat
 end

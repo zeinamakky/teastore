@@ -1,4 +1,5 @@
 class Tea < ActiveRecord::Base
+
   def reviews_list
     reviews.split('; ')
   end

@@ -1,6 +1,5 @@
 class TeasController < ApplicationController
-  attr_reader :name, :price, :description, :reviews, :stars, :image
-
+  attr_reader :name, :price, :description, :reviews, :stars, :image, :supplier_id
   def index
   @teas = Tea.all
   tea_id = params[:id]
@@ -51,11 +50,12 @@ class TeasController < ApplicationController
     price: params[:price],
     description: params[:description],
     image: params[:image],
-    stock: params[:stock]
+    stock: params[:stock],
+    supplier_id: params[:supplier_id]
                }) 
     tea_id = params[:id]
     @tea = Tea.last
-    flash[:success] = "Recipe successfully created"
+    flash[:success] = "Tea listing successfully created"
 
     #render 'create.html.erb'
     redirect_to "/teas/#{@tea.id}"
@@ -75,10 +75,12 @@ class TeasController < ApplicationController
       price: params[:price],
       description: params[:description],
       image: params[:image],
-      stock: params[:stock]
+      stock: params[:stock],
+      supplier_id: params[:supplier_id]
+
                })
     # render 'update.html.erb'
-    flash[:success] = "Recipe successfully updated"
+    flash[:success] = "Tea listing successfully updated"
     redirect_to "/teas/#{@tea.id}"
   end
 
@@ -86,7 +88,7 @@ class TeasController < ApplicationController
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     @tea.destroy
-    flash[:success] = "Recipe successfully deleted"
+    flash[:success] = "Tea listing successfully deleted"
 
     # render 'destroy.html.erb'
     redirect_to '/teas'
