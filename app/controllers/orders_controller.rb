@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
     Order.create({
       tea_id: params[:tea_id],
       user_id: current_user.id,
-      quantity: params[:quantity]
+      quantity: params[:quantity],
+      
+
       })
     @order = Order.last
 
