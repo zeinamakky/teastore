@@ -19,17 +19,20 @@
   <li role="presentation"><a href="/teas/new">Add new tea</a></li>
   <li role="presentation"><a href="/teas?discount=alldiscounted">Discount Items</a></li>
   <li role="presentation"><a href="/teas/random">Random</a></li>
-  <li role="presentation"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Sort
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="/teas?sort=price&order=asc">Sort by price: lowest to highest</a></li>
-    <li><a href="/teas?sort=price&order=desc">Sort by price: highest to lowest</a></li>
-<!--     <li role="separator" class="divider"></li>
- -->
-  </ul>
-</li>
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Sort by <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="/teas?sort=price&order=asc">Price: lowest to highest</a></li>
+    <li><a href="/teas?sort=price&order=desc">Price: highest to lowest</a></li>
+    </ul>
+  </li>
+  
+  <li role="presentation"><a href="/users/sign_up">Sign up</a></li>
+  <li role="presentation"><a href="/users/sign_in">Sign in</a></li>
+  <li role="presentation"><%= link_to "Sign out", "/users/sign_out", method: :delete %>
+  </li>
 
 </ul>
 <div class="row">

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/' => 'teas#index'
   get '/teas' => 'teas#index'
   get '/teas/new' => 'teas#new'
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
   get '/suppliers/new' => 'suppliers#new'
   post 'suppliers' => 'suppliers#create'
   get '/suppliers/:id/edit' => 'suppliers#edit'
-  pat
+  patch '/suppliers/:id' => 'suppliers#update'
+  delete 'suppliers/:id' => 'suppliers#destroy'
 end

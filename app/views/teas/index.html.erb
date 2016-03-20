@@ -10,7 +10,7 @@ Our teas
 
   <div class="tea_listing">
   <h2><a href="/teas/<%= tea.id %>"><%= tea.name%>: <%= number_to_currency(tea.price) %></a></h2>
-  <img class="thumbnail" src= <%= tea.image %> <br />
+  <img class="thumbnail" src= <%= tea.images[0].url %> <br />
   <p><%= tea.friendly_updated_at %></p>
   <p><span class="intro">Description:</span> <%= tea.description %></p>
   <p><span class="intro">Rating:</span> <%= tea.stars %></p>
