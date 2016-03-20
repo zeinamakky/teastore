@@ -1,6 +1,7 @@
 class Tea < ActiveRecord::Base
   belongs_to :supplier
   has_many :images
+  has_many :orders
   def reviews_list
     reviews.split('; ')
   end

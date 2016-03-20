@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320162300) do
+ActiveRecord::Schema.define(version: 20160320202639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20160320162300) do
     t.integer  "tea_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "tea_id"
+    t.integer  "quantity"
+    t.decimal  "subtotal",   precision: 8, scale: 2
+    t.decimal  "tax",        precision: 8, scale: 2
+    t.decimal  "total",      precision: 8, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -42,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160320162300) do
     t.datetime "updated_at",                                         null: false
     t.boolean  "stock",                               default: true
     t.integer  "supplier_id"
+    t.integer  "tea_id"
   end
 
   create_table "users", force: :cascade do |t|

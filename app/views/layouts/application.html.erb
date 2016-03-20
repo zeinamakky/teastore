@@ -28,12 +28,13 @@
     <li><a href="/teas?sort=price&order=desc">Price: highest to lowest</a></li>
     </ul>
   </li>
-  
+  <% if current_user == nil%>
   <li role="presentation"><a href="/users/sign_up">Sign up</a></li>
   <li role="presentation"><a href="/users/sign_in">Sign in</a></li>
+  <% else %>
   <li role="presentation"><%= link_to "Sign out", "/users/sign_out", method: :delete %>
   </li>
-
+  <% end %>
 </ul>
 <div class="row">
     <div class="col-lg-6">
@@ -52,6 +53,9 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
     <%= message.html_safe %>  
   </div>
+<% end %>
+<% if current_user%>
+<p>Welcome <%= current_user.email %></p>
 <% end %>
 <%= yield %>
 </div>
