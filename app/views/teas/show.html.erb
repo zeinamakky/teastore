@@ -7,7 +7,25 @@
 <p><span class="intro">Description:</span> <%= @tea.description %></p>
 <p><span class="intro">Brought to you by:</span> <%= @tea.supplier.name %>
 <p><span class="intro">Rating:</span> <%= @tea.stars %></p>
+
+
+<%= form_tag '/orders', method: :post do %>
+  <div class="form-group">
+    <%=label_tag :quantity, "Quanity" %>
+    <%= text_field_tag :quantity, "" %> | 
+    <%=label_tag :tea_id, "Tea id" %>
+    <%= text_field_tag :tea_id, "" %>
+  </div>
+
+  <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <%= submit_tag "Buy Now" %>
+  </div>
+  </div>
+<% end %>
+<p>&nbsp;</p>
 <h3>Reviews</h3>
+
 
 <ul>
 
