@@ -2,15 +2,15 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :tea
 
-  def subtotal
+  def calc_subtotal
     tea.price * quantity
   end
 
-  def tax
+  def calc_tax
     subtotal * 0.09
   end
 
-  def total
+  def calc_total
     subtotal + tax
   end
 end

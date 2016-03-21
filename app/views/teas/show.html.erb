@@ -12,9 +12,8 @@
 <%= form_tag '/orders', method: :post do %>
   <div class="form-group">
     <%=label_tag :quantity, "Quanity" %>
-    <%= text_field_tag :quantity, "" %> | 
-    <%=label_tag :tea_id, "Tea id" %>
-    <%= text_field_tag :tea_id, "" %>
+    <%= text_field_tag :quantity, "" %>  
+    <%= hidden_field_tag :tea_id, @tea.id %>
   </div>
 
   <div class="form-group">

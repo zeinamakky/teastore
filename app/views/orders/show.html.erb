@@ -1,5 +1,5 @@
 <p> <span class="intro">Order ID:</span> <%= @order.id %></p>
 <p><span class="intro">Quantity: <%= @order.quantity %></span></p>
-<p><span class="intro">Subtotal: <%= @order.subtotal %></span></p>
-<p><span class="intro">Tax: <%= @order.tax %></span></p>
-<p><span class="intro">Total: <%= @order.total %></span></p>
+<p><span class="intro">Subtotal: <%= @order.calc_subtotal %></span></p>
+<p><span class="intro">Tax: <%= @order.calc_tax %></span></p>
+<p><span class="intro">Total: <%= @order.calc_total %></span></p>
