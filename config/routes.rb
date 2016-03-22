@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   delete '/suppliers/:id' => 'suppliers#destroy'
 
   post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
 end

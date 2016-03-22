@@ -35,15 +35,14 @@
   <li role="presentation"><%= link_to "Sign out", "/users/sign_out", method: :delete %>
   </li>
   <% end %>
-</ul>
-<div class="row">
-    <div class="col-lg-6">
-    <%= form_tag '/teas?search_for#{:search}',  method: :get do %>
-    <%= text_field_tag :search, "Search for...", class: "col-lg-6" %>
-    <%= submit_tag "Submit" %>
-    </div>
+  <li role="presentation">
+    <%= form_tag '/teas?search_for#{:search}', class:"navbar-form navbar-left", method: :get do %>
+    <%= text_field_tag :search, " ", class:"form-control" %>
+    <%= submit_tag "Submit", class: "btn btn-default" %>
     <% end %>
-</div>
+  </li>
+</ul>
+
 
 <br />
 <div id="main_page_container">
