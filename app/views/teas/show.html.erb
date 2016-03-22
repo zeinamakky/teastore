@@ -1,8 +1,8 @@
 <h2 class="tea_listing_hed"><%= @tea.name %>: <%= number_to_currency(@tea.price) %> </h2>
 <h3><%= @tea.stock_message %></h3>
-<% @tea.images.each do |image| %>
-<img src= <%= image.url %> alt=<%= image.description %> ><br />
-<% end %>
+<p><% @tea.images.each do |image| %>
+<img class="multi_imgs" src= <%= image.url %> alt=<%= image.description %> >
+<% end %></p>
 <p><span class="intro"> <%= @tea.sale_item %></span> Tax: <%= number_to_currency(@tea.tax) %>; <%= number_to_currency(@tea.total) %> with tax</p>
 <p><span class="intro">Description:</span> <%= @tea.description %></p>
 <p><span class="intro">Brought to you by:</span> <%= @tea.supplier.name %>

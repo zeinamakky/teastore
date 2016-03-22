@@ -8,13 +8,7 @@ class TeasController < ApplicationController
   if sort_attribute && sort_order
     @teas = Tea.order(sort_attribute => sort_order)
   end
-  
-  
-  
-  # can also do it this way
-  # if sort_attribute && sort_order
-  #   @teas = Tea.order(sort_attribute => sort_order)
-  # end
+
   discount_attribute = params[:discount]
   if discount_attribute != nil
     @teas = Tea.where("price <= ?", 5)
@@ -49,7 +43,6 @@ class TeasController < ApplicationController
     name: params[:name],
     price: params[:price],
     description: params[:description],
-    image: params[:image],
     stock: params[:stock],
     supplier_id: params[:supplier_id]
                }) 
@@ -74,7 +67,6 @@ class TeasController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      image: params[:image],
       stock: params[:stock],
       supplier_id: params[:supplier_id]
 
