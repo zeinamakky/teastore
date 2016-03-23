@@ -38,4 +38,12 @@ class Tea < ActiveRecord::Base
     "In stock"
    end
   end
+
+  def category_names
+    names = []
+    categories.each do |category|
+      names << category.name
+    end
+    names.join(", ")
+  end
 end

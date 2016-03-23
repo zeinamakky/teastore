@@ -5,9 +5,8 @@
 <% end %></p>
 <p><span class="intro"> <%= @tea.sale_item %></span> Tax: <%= number_to_currency(@tea.tax) %>; <%= number_to_currency(@tea.total) %> with tax</p>
 <p><span class="intro"> Categories: </span>
-<% @tea.categories.each do |category|%>
-  <%= category.name %>, 
-<% end %>
+  <%= @tea.category_names %>
+
 
 <p><span class="intro">Description:</span> <%= @tea.description %></p>
 <p><span class="intro">Brought to you by:</span> <%= @tea.supplier.name %>
