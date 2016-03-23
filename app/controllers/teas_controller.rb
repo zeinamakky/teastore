@@ -20,6 +20,9 @@ class TeasController < ApplicationController
     @teas = Tea.where("name LIKE ? OR description LIKE ?", "%#{search_for}%", "%#{search_for}%")
   end
   
+  if params[:category]
+    @teas = Category.find_by(name: params[:category]).teas
+  end
   render "index.html.erb"
   end
 
