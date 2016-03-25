@@ -1,17 +1,26 @@
 class OrdersController < ApplicationController
   def create
-    
-    subtotal = Tea.find_by(id: params[:tea_id]).price.to_i * params[:quantity].to_i
+    carted_teas = CartedTea.where(status: 'carted', user_id: current_user.id)
+    subtotal = 0
+    carted_teas.each do |carted_tea|
+      subtotal += carted_tea.calc_subtotal
+    end
     tax = subtotal * 0.09
     total = subtotal + tax
+
     @order = Order.create({
-      tea_id: params[:tea_id],
       user_id: current_user.id,
-      quantity: params[:quantity],
       subtotal: subtotal,
       tax: tax,
-      total: total
+      total: total,
+
       })
+    carted_teas.each do |carted_tea|
+      carted_tea.update({
+        status: "purchased",
+        order_id: @order.id
+        })
+    end
     #@order = Order.last
     # The above code would work but in cases where multiple users
     # are ordering stuff at the same time, the last order might not

@@ -13,16 +13,17 @@
 <p><span class="intro">Rating:</span> <%= @tea.stars %></p>
 
 
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag '/cart', method: :post do %>
   <div class="form-group">
     <%=label_tag :quantity, "Quanity" %>
     <%= text_field_tag :quantity, "" %>  
     <%= hidden_field_tag :tea_id, @tea.id %>
+    <%= hidden_field_tag :status, "carted" %>
   </div>
 
   <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-    <%= submit_tag "Buy Now" %>
+    <%= submit_tag "Add to Cart" %>
   </div>
   </div>
 <% end %>

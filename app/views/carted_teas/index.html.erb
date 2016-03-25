@@ -1,0 +1,9 @@
+<h1>Your shopping cart</h1>
+<% @carted_teas.each do |carted_tea| %>
+  <p><%= carted_tea.tea.name %>: <%= carted_tea.quantity %></p>
+ <%= carted_tea.calc_subtotal %>
+<% end %>
+<%= form_tag '/orders', method: :post do %>
+  <%= hidden_field_tag :status, "purchased" %>
+  <%= submit_tag "BUY NOW" %>
+<% end %>

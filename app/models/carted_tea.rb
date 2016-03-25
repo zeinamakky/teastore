@@ -1,7 +1,7 @@
-class Order < ActiveRecord::Base
+class CartedTea < ActiveRecord::Base
+  belongs_to :order
   belongs_to :user
-  has_many :carted_teas
-  has_many :teas, through: :carted_teas
+  belongs_to :tea
 
   def calc_subtotal
     tea.price * quantity

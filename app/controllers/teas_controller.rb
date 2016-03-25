@@ -53,7 +53,6 @@ class TeasController < ApplicationController
     @tea = Tea.last
     flash[:success] = "Tea listing successfully created"
 
-    #render 'create.html.erb'
     redirect_to "/teas/#{@tea.id}"
   end
 
@@ -74,7 +73,6 @@ class TeasController < ApplicationController
       supplier_id: params[:supplier_id]
 
                })
-    # render 'update.html.erb'
     flash[:success] = "Tea listing successfully updated"
     redirect_to "/teas/#{@tea.id}"
   end
@@ -85,7 +83,6 @@ class TeasController < ApplicationController
     @tea.destroy
     flash[:success] = "Tea listing successfully deleted"
 
-    # render 'destroy.html.erb'
     redirect_to '/teas'
   end
 end
