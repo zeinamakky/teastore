@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   post '/orders' => 'orders#create'
   get '/orders/:id' => 'orders#show'
 
+  get '/cart' => 'carted_teas#index'
   post '/cart' => 'carted_teas#create'
+  patch '/cart' => 'carted_teas#update'
   get '/cart/:id' => 'carted_teas#index'
+  patch '/cart/:id' => 'carted_teas#update'
+
 end

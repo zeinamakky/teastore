@@ -33,4 +33,6 @@ class OrdersController < ApplicationController
     render 'show.html.erb'
 
   end
+
+
 end
