@@ -38,10 +38,15 @@ class TeasController < ApplicationController
   end
 
   def new
-    render 'new.html.erb'
+    if current_user && current_user.admin
+      render 'new.html.erb'
+    else
+      redirect_to '/teas'
+    end
   end
 
   def create
+    if current_user && current_user.admin
     Tea.create({
     name: params[:name],
     price: params[:price],
@@ -54,15 +59,25 @@ class TeasController < ApplicationController
     flash[:success] = "Tea listing successfully created"
 
     redirect_to "/teas/#{@tea.id}"
+
+    else 
+      redirect_to '/teas'
+    end
   end
 
   def edit
-    tea_id = params[:id]
-    @tea = Tea.find_by(id: tea_id)
-    render 'edit.html.erb'
+    if current_user && current_user.admin
+      tea_id = params[:id]
+      @tea = Tea.find_by(id: tea_id)
+      render 'edit.html.erb'
+    else
+      redirect_to '/teas'
+    end
+
   end
 
   def update
+    if current_user && current_user.admin
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     Tea.update(tea_id, {
@@ -75,14 +90,21 @@ class TeasController < ApplicationController
                })
     flash[:success] = "Tea listing successfully updated"
     redirect_to "/teas/#{@tea.id}"
+    else
+      redirect_to '/teas'
+    end
   end
 
   def destroy
+    if current_user && current_user.admin
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     @tea.destroy
     flash[:success] = "Tea listing successfully deleted"
 
     redirect_to '/teas'
+  else
+    redirect_to '/teas'
+  end
   end
 end

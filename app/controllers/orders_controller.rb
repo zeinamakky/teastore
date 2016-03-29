@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   def create
+    #carted_teas = current_user.carted_teas.where(status: "carted")
+
     carted_teas = CartedTea.where(status: 'carted', user_id: current_user.id)
     subtotal = 0
     carted_teas.each do |carted_tea|

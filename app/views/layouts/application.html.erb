@@ -15,7 +15,9 @@
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="/teas">Home</a></li>
   <li role="presentation"><a href="/teas">Teas</a></li>
-  <li role="presentation"><a href="/teas/new">Add new tea</a></li>
+  <% if current_user && current_user.admin %>
+    <li role="presentation"><a href="/teas/new">Add new tea</a></li>
+  <%end %>
   <li role="presentation"><a href="/teas?discount=alldiscounted">Discount Items</a></li>
   <li role="presentation"><a href="/teas/random">Random</a></li>
   <li role="presentation" class="dropdown">
@@ -50,9 +52,11 @@
     <%= submit_tag "Submit", class: "btn btn-default" %>
     <% end %>
   </li>
+  <% if current_user %>
   <li>
-  <a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> Shopping Cart</a>
+  <a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span> Shopping Cart (<%= @cart_count %>)</a>
   </li>
+  <%end%>
 </ul>
 
 

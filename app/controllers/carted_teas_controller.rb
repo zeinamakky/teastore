@@ -12,10 +12,11 @@ class CartedTeasController < ApplicationController
   end
 
   def index
-    @carted_teas = CartedTea.where(status: "carted", user_id: current_user.id)
-    # or you could write current_user.carted_products.where(status: "carted")
+     @carted_teas = where(status: "carted", user_id: current_user.id)
+    # or you could write current_user.carted_teas.where(status: "carted")
     if @carted_teas[0] == nil
       redirect_to "/teas"
+      flash[:success] = "You have no items in your cart"
 
     else
       render 'index.html.erb'

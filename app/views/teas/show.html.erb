@@ -12,7 +12,7 @@
 <p><span class="intro">Brought to you by:</span> <%= @tea.supplier.name %>
 <p><span class="intro">Rating:</span> <%= @tea.stars %></p>
 
-
+<% if current_user %>
 <%= form_tag '/cart', method: :post do %>
   <div class="form-group">
     <%=label_tag :quantity, "Quanity" %>
@@ -27,6 +27,7 @@
   </div>
   </div>
 <% end %>
+<% end %>
 <p>&nbsp;</p>
 <h3>Reviews</h3>
 
@@ -34,10 +35,11 @@
 <ul>
 
 
+<% if current_user && current_user.admin %>
 <p><a href="/teas/<%=@tea.id%>/edit">Edit this tea listing</a></p>
 <%= link_to "Delete this tea listing", "/teas/#{@tea.id}", method: :delete %>
-<!--<p><a href="/teas/<%=@tea.id%>">Delete this tea listing</a></p>
-
+<% end %>
+<!--
 To delete something from a Link you have to use
 the ruby code here rather than the href link OR
 you can do 
