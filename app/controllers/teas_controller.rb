@@ -1,5 +1,7 @@
 class TeasController < ApplicationController
   attr_reader :name, :price, :description, :reviews, :stars, :image, :supplier_id
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
   @teas = Tea.all
   tea_id = params[:id]
@@ -38,15 +40,10 @@ class TeasController < ApplicationController
   end
 
   def new
-    if current_user && current_user.admin
       render 'new.html.erb'
-    else
-      redirect_to '/teas'
-    end
   end
 
   def create
-    if current_user && current_user.admin
     Tea.create({
     name: params[:name],
     price: params[:price],
@@ -60,24 +57,16 @@ class TeasController < ApplicationController
 
     redirect_to "/teas/#{@tea.id}"
 
-    else 
-      redirect_to '/teas'
-    end
   end
 
   def edit
-    if current_user && current_user.admin
       tea_id = params[:id]
       @tea = Tea.find_by(id: tea_id)
       render 'edit.html.erb'
-    else
-      redirect_to '/teas'
-    end
 
   end
 
   def update
-    if current_user && current_user.admin
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     Tea.update(tea_id, {
@@ -90,21 +79,21 @@ class TeasController < ApplicationController
                })
     flash[:success] = "Tea listing successfully updated"
     redirect_to "/teas/#{@tea.id}"
-    else
-      redirect_to '/teas'
-    end
   end
 
   def destroy
-    if current_user && current_user.admin
     tea_id = params[:id]
     @tea = Tea.find_by(id: tea_id)
     @tea.destroy
     flash[:success] = "Tea listing successfully deleted"
-
-    redirect_to '/teas'
-  else
     redirect_to '/teas'
   end
+
+  private 
+  
+  def authenticate_admin!
+    unless current_user && current_user.admin
+      redirect_to '/teas'
+    end
   end
 end
