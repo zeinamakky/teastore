@@ -2,7 +2,6 @@ class Tea < ActiveRecord::Base
   belongs_to :supplier
   has_many :images
   has_many :carted_teas
- # has_many :orders, through: :carted_teas
   has_many :categorized_teas
   has_many :categories, through: :categorized_teas
 

@@ -5,6 +5,7 @@ class CartedTeasController < ApplicationController
       user_id: current_user.id,
       quantity: params[:quantity],
       status: params[:status],
+      # status comes from hidden text field tag in form but could just be a string called 'carted' here
     })
 
      redirect_to "/cart/#{@carted_tea.id}"
@@ -12,6 +13,7 @@ class CartedTeasController < ApplicationController
 
   def index
     @carted_teas = CartedTea.where(status: "carted", user_id: current_user.id)
+    # or you could write current_user.carted_products.where(status: "carted")
     if @carted_teas[0] == nil
       redirect_to "/teas"
 

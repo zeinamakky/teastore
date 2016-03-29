@@ -15,16 +15,12 @@ class OrdersController < ApplicationController
       total: total,
 
       })
-    carted_teas.each do |carted_tea|
-      carted_tea.update({
-        status: "purchased",
-        order_id: @order.id
-        })
-    end
-    #@order = Order.last
-    # The above code would work but in cases where multiple users
-    # are ordering stuff at the same time, the last order might not
-    # be the one a user started.
+
+    carted_teas.update_all(status: "purchased", order_id: @order.id)
+    # the above is more efficient than doing another loop bc you're not hitting the database
+    # every single time
+    
+    
     redirect_to "/orders/#{@order.id}"
   end
 
