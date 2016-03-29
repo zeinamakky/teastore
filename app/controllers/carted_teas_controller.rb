@@ -1,4 +1,6 @@
 class CartedTeasController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     @carted_tea = CartedTea.create ({
       tea_id: params[:tea_id],
